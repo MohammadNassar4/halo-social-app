@@ -146,104 +146,109 @@ export default function Profile({
   return (
     <>
       {user && (
-        <div className="flex flex-col gap-5 p-4 md:p-0 min-h-screen">
-          <div className="bg-surface rounded-2xl overflow-hidden border border-border">
-            <div className="relative h-40 md:h-62.5 bg-halo-gradient">
-              {user.cover && (
-                <img
-                  src={user.cover}
-                  alt=""
-                  className="w-full h-full object-cover object-center"
-                />
-              )}
-              {coverPending && (
-                <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/40 flex items-center justify-center">
-                  <ImSpinner8 className="animate-spin text-2xl" />
-                </div>
-              )}
-              {mine && (
-                <button
-                  onClick={() => {
-                    setDialogType("cover");
-                    setIsOpen(true);
-                  }}
-                  className="absolute bg-surface p-2 text-muted hover:text-fg top-2 md:top-4 right-2 md:right-4 rounded-full cursor-pointer"
-                >
-                  <FaRegEdit />
-                </button>
-              )}
-            </div>
-
-            <div className="h-55 sm:h-57 md:h-67 lg:h-30 border-b border-border relative">
-              <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end absolute -top-14  md:-top-26 w-full p-2 md:p-5">
-                <div className="flex flex-col lg:flex-row items-center sm:items-end gap-2 md:gap-5 mb-2 lg:mb-0">
-                  <div className="relative mx-auto">
-                    <div className="rounded-full size-25 md:size-40 p-0.75 bg-halo-gradient overflow-hidden ">
-                      <img
-                        src={user.photo}
-                        alt="user profile picture"
-                        className="w-full h-full object-cover rounded-full"
-                      />
-                    </div>
-                    {isPending && (
-                      <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/40 rounded-full flex items-center justify-center">
-                        <ImSpinner8 className="animate-spin text-2xl" />
-                      </div>
-                    )}
-                    {mine && (
-                      <button
-                        onClick={() => {
-                          setDialogType("photo");
-                          setIsOpen(true);
-                        }}
-                        className="absolute p-2 bg-surface-2 rounded-full cursor-pointer bottom-0 right-0 md:right-4 text-muted hover:text-fg"
-                      >
-                        <IoCameraOutline />
-                      </button>
-                    )}
+        <div className="flex flex-col gap-5 md:p-0 min-h-screen">
+          <div className="px-4 sm:p-0">
+            <div className="bg-surface rounded-2xl overflow-hidden border border-border">
+              <div className="relative h-40 md:h-62.5 bg-halo-gradient">
+                {user.cover && (
+                  <img
+                    src={user.cover}
+                    alt=""
+                    className="w-full h-full object-cover object-center"
+                  />
+                )}
+                {coverPending && (
+                  <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/40 flex items-center justify-center">
+                    <ImSpinner8 className="animate-spin text-2xl" />
                   </div>
-                  <div className="flex flex-col gap-1 text-center lg:text-start mx-auto">
-                    <div className="text-base sm:text-lg md:text-2xl font-bold">
-                      {user.name}
-                    </div>
-                    <div className="text-muted text-xs sm:text-sm">
-                      @{user.username}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-2 items-center mb-2 lg:mb-0">
-                  <button className="text-center hover:bg-border/50 p-2 rounded-md cursor-pointer">
-                    <div className="font-bold">{user.followersCount}</div>
-                    <div className="text-muted text-xs">Followers</div>
+                )}
+                {mine && (
+                  <button
+                    onClick={() => {
+                      setDialogType("cover");
+                      setIsOpen(true);
+                    }}
+                    className="absolute bg-surface p-2 text-muted hover:text-fg top-2 md:top-4 right-2 md:right-4 rounded-full cursor-pointer"
+                  >
+                    <FaRegEdit />
                   </button>
-                  <button className="text-center hover:bg-border/50 p-2 rounded-md cursor-pointer">
-                    <div className="font-bold">{user.followingCount}</div>
-                    <div className="text-muted text-xs">Following</div>
-                  </button>
-                </div>
-                {mine ? (
-                  <Link to="/settings" className="border border-muted text-muted rounded-full px-3 py-1 font-semibold cursor-pointer text-xs lg:text-sm flex items-center gap-1">
-                    <HiOutlineCog8Tooth className="text-base" />
-                    <span className="">Edit profile</span>
-                  </Link>
-                ) : (
-                  <FollowBtn userId={user._id} />
                 )}
               </div>
-            </div>
-            <div className="px-4">
-              <button
-                onClick={() => setActiveTab("about")}
-                className={`px-4 py-3 text-sm sm:text-base font-medium hover:bg-surface-2 cursor-pointer border-b-3 ${activeTab === "about" ? "border-accent" : "border-transparent"}`}
-              >
-                About
-              </button>
-              <button
-                onClick={() => setActiveTab("posts")}
-                className={`px-4 py-3 text-sm sm:text-base font-medium hover:bg-surface-2 cursor-pointer border-b-3 ${activeTab === "posts" ? "border-accent" : "border-transparent"}`}
-              >
-                Posts
-              </button>
+
+              <div className="h-55 sm:h-57 md:h-67 lg:h-30 border-b border-border relative">
+                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end absolute -top-14  md:-top-26 w-full p-2 md:p-5">
+                  <div className="flex flex-col lg:flex-row items-center sm:items-end gap-2 md:gap-5 mb-2 lg:mb-0">
+                    <div className="relative mx-auto">
+                      <div className="rounded-full size-25 md:size-40 p-0.75 bg-halo-gradient overflow-hidden ">
+                        <img
+                          src={user.photo}
+                          alt="user profile picture"
+                          className="w-full h-full object-cover rounded-full"
+                        />
+                      </div>
+                      {isPending && (
+                        <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/40 rounded-full flex items-center justify-center">
+                          <ImSpinner8 className="animate-spin text-2xl" />
+                        </div>
+                      )}
+                      {mine && (
+                        <button
+                          onClick={() => {
+                            setDialogType("photo");
+                            setIsOpen(true);
+                          }}
+                          className="absolute p-2 bg-surface-2 rounded-full cursor-pointer bottom-0 right-0 md:right-4 text-muted hover:text-fg"
+                        >
+                          <IoCameraOutline />
+                        </button>
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-1 text-center lg:text-start mx-auto">
+                      <div className="text-base sm:text-lg md:text-2xl font-bold">
+                        {user.name}
+                      </div>
+                      <div className="text-muted text-xs sm:text-sm">
+                        @{user.username}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 items-center mb-2 lg:mb-0">
+                    <button className="text-center hover:bg-border/50 p-2 rounded-md cursor-pointer">
+                      <div className="font-bold">{user.followersCount}</div>
+                      <div className="text-muted text-xs">Followers</div>
+                    </button>
+                    <button className="text-center hover:bg-border/50 p-2 rounded-md cursor-pointer">
+                      <div className="font-bold">{user.followingCount}</div>
+                      <div className="text-muted text-xs">Following</div>
+                    </button>
+                  </div>
+                  {mine ? (
+                    <Link
+                      to="/settings"
+                      className="border border-muted text-muted rounded-full px-3 py-1 font-semibold cursor-pointer text-xs lg:text-sm flex items-center gap-1"
+                    >
+                      <HiOutlineCog8Tooth className="text-base" />
+                      <span className="">Edit profile</span>
+                    </Link>
+                  ) : (
+                    <FollowBtn userId={user._id} />
+                  )}
+                </div>
+              </div>
+              <div className="px-4">
+                <button
+                  onClick={() => setActiveTab("about")}
+                  className={`px-4 py-3 text-sm sm:text-base font-medium hover:bg-surface-2 cursor-pointer border-b-3 ${activeTab === "about" ? "border-accent" : "border-transparent"}`}
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => setActiveTab("posts")}
+                  className={`px-4 py-3 text-sm sm:text-base font-medium hover:bg-surface-2 cursor-pointer border-b-3 ${activeTab === "posts" ? "border-accent" : "border-transparent"}`}
+                >
+                  Posts
+                </button>
+              </div>
             </div>
           </div>
 
@@ -306,10 +311,7 @@ export default function Profile({
           </section>
 
           {/* posts section */}
-          <section
-            hidden={activeTab !== "posts"}
-            className="flex flex-col gap-4"
-          >
+          <section hidden={activeTab !== "posts"} className="flex flex-col gap-0 md:gap-4">
             {posts &&
               posts?.map((post) => <PostCard key={post._id} post={post} />)}
           </section>
