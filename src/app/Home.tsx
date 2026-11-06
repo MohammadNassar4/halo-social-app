@@ -72,7 +72,7 @@ function Home() {
   return (
     <>
       <div>
-        <nav className="sticky top-17.25 md:pt-10 bg-bg border-b border-border flex justify-end items-baseline-last z-40">
+        <nav className="sticky top-17 md:pt-10 bg-bg border-b border-border flex justify-end items-baseline-last z-40">
           <button
             onClick={() => {
               window.scrollTo(0, 0);
