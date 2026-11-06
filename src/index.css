@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Clean light */
+:root {
+  --bg: #f6f8fc;
+  --header: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #e2e8f0;
+  --border: #e2e8f0;
+  --fg: #0f172a;
+  --muted: #64748b;
+  --primary: #4f46e5;
+  --accent: #0e7490;
+  --glow: rgba(79, 70, 229, 0.3);
+  --halo-gradient: linear-gradient(135deg, #4f46e5, #22d3ee);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --halo-1: #4F46E5;
+  --halo-2: #22D3EE;
+  --halo-3: #22D3EE;
+}
+
+/* Aurora dark */
+.dark {
+  --bg: #07090f;
+  --header: #0a0d15;
+  --surface: #10131c;
+  --surface-2: #1b2030;
+  --border: rgba(255, 255, 255, 0.08);
+  --fg: #f1f5f9;
+  --muted: #94a3b8;
+  --primary: #7c3aed;
+  --accent: #22d3ee;
+  --glow: rgba(124, 58, 237, 0.45);
+  --halo-gradient: linear-gradient(135deg, #7c3aed, #06b6d4, #34d399);
+
+  --halo-1: #7C3AED;
+  --halo-2: #06B6D4;
+  --halo-3: #34D399;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-header: var(--header);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+}
+
+@utility bg-halo-gradient {
+  background-image: var(--halo-gradient);
+}
+
+@layer components {
+  .button-outline {
+    @apply text-accent font-semibold bg-transparent border border-accent rounded-full py-2 px-4 cursor-pointer hover:bg-accent hover:text-white transition-colors duration-200 outline-0;
+  }
+
+  .button-primary {
+    @apply w-full text-white bg-primary rounded-full py-2 px-4 font-semibold cursor-pointer hover:scale-105 shadow-[0_0_20px_rgba(108,92,231,0.4)] transition-all duration-300 active:scale-100 border border-primary outline-0;
+  }
+
+  .card {
+    @apply bg-surface rounded-2xl border border-border p-4 md:p-5 outline-0;
+  }
+}
