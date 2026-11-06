@@ -147,7 +147,7 @@ export default function Profile({
     <>
       {user && (
         <div className="flex flex-col gap-5 md:p-0 min-h-screen">
-          <div className="px-4 sm:p-0">
+          <div className="px-2 sm:p-0">
             <div className="bg-surface rounded-2xl overflow-hidden border border-border">
               <div className="relative h-40 md:h-62.5 bg-halo-gradient">
                 {user.cover && (
@@ -254,64 +254,69 @@ export default function Profile({
 
           {/* about section */}
           <section
-            className="rounded-2xl border border-border bg-surface p-4"
+            className="px-2 sm:p-0"
             aria-labelledby="profile-details-heading"
             hidden={activeTab !== "about"}
           >
-            <h2
-              id="profile-details-heading"
-              className="mb-2 text-base font-semibold"
-            >
-              Profile details
-            </h2>
-            <dl className="divide-y divide-border">
-              <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
-                <dt className="shrink-0 text-muted">Name</dt>
-                <dd className="min-w-0 wrap-break-word text-right font-medium">
-                  {user.name}
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
-                <dt className="shrink-0 text-muted">Username</dt>
-                <dd className="min-w-0 wrap-break-word text-right font-medium">
-                  @{user.username}
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
-                <dt className="shrink-0 text-muted">Age</dt>
-                <dd className="min-w-0 wrap-break-word text-right font-medium">
-                  {currentYear - +user.dateOfBirth.slice(0, 4)} years
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
-                <dt className="shrink-0 text-muted">Gender</dt>
-                <dd className="min-w-0 wrap-break-word text-right font-medium">
-                  {user.gender}
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
-                <dt className="shrink-0 text-muted">Email</dt>
-                <dd className="min-w-0 wrap-break-word text-right font-medium">
-                  {user.email}
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
-                <dt className="shrink-0 text-muted">Date of birth</dt>
-                <dd className="min-w-0 wrap-break-word text-right font-medium">
-                  {formatDate(user?.dateOfBirth || "")}
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
-                <dt className="shrink-0 text-muted">Joined</dt>
-                <dd className="min-w-0 wrap-break-word text-right font-medium">
-                  {formatDate(user?.createdAt || "")}
-                </dd>
-              </div>
-            </dl>
+            <div className="rounded-2xl border border-border bg-surface p-4">
+              <h2
+                id="profile-details-heading"
+                className="mb-2 text-base font-semibold"
+              >
+                Profile details
+              </h2>
+              <dl className="divide-y divide-border">
+                <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                  <dt className="shrink-0 text-muted">Name</dt>
+                  <dd className="min-w-0 wrap-break-word text-right font-medium">
+                    {user.name}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                  <dt className="shrink-0 text-muted">Username</dt>
+                  <dd className="min-w-0 wrap-break-word text-right font-medium">
+                    @{user.username}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                  <dt className="shrink-0 text-muted">Age</dt>
+                  <dd className="min-w-0 wrap-break-word text-right font-medium">
+                    {currentYear - +user.dateOfBirth.slice(0, 4)} years
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                  <dt className="shrink-0 text-muted">Gender</dt>
+                  <dd className="min-w-0 wrap-break-word text-right font-medium">
+                    {user.gender}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                  <dt className="shrink-0 text-muted">Email</dt>
+                  <dd className="min-w-0 wrap-break-word text-right font-medium">
+                    {user.email}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                  <dt className="shrink-0 text-muted">Date of birth</dt>
+                  <dd className="min-w-0 wrap-break-word text-right font-medium">
+                    {formatDate(user?.dateOfBirth || "")}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                  <dt className="shrink-0 text-muted">Joined</dt>
+                  <dd className="min-w-0 wrap-break-word text-right font-medium">
+                    {formatDate(user?.createdAt || "")}
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </section>
 
           {/* posts section */}
-          <section hidden={activeTab !== "posts"} className="flex flex-col gap-0 md:gap-4">
+          <section
+            hidden={activeTab !== "posts"}
+            className="flex flex-col gap-0 md:gap-4"
+          >
             {posts &&
               posts?.map((post) => <PostCard key={post._id} post={post} />)}
           </section>

@@ -236,7 +236,7 @@ export default function PostCard({ post }: { post: PostType }) {
   return (
     <>
       {post.sharedPost ? (
-        <div className=" p-4 border-b border-border flex flex-col gap-4 md:bg-surface md:border md:rounded-2xl md:p-5 overflow-hidden">
+        <div className=" p-2 border-b border-border flex flex-col gap-4 md:bg-surface md:border md:rounded-2xl md:p-5 overflow-hidden">
           <div className="flex justify-between items-start">
             <div className="flex items-center gap-3">
               <div className="bg-halo-gradient rounded-full p-0.5">
@@ -401,7 +401,7 @@ export default function PostCard({ post }: { post: PostType }) {
           </div>
         </div>
       ) : (
-        <div className=" p-4 border-b border-border flex flex-col gap-4 md:bg-surface md:border md:rounded-2xl md:p-5 overflow-hidden">
+        <div className="p-2 border-b border-border flex flex-col gap-4 md:bg-surface md:border md:rounded-2xl md:p-5 overflow-hidden">
           <div className="flex justify-between items-start gap-1">
             <div className="flex items-center gap-3">
               <div className="bg-halo-gradient rounded-full p-0.5">
