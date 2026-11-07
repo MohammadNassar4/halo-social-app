@@ -1,4 +1,5 @@
 import { useDialog } from "@/contexts/dialogContext/useDialog";
+import { useNotificationCount } from "@/contexts/notificationContext/useNotificationCount";
 import { BsBell, BsBookmark } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
 import { RiHomeLine, RiUser3Line } from "react-icons/ri";
@@ -6,6 +7,8 @@ import { NavLink } from "react-router";
 
 export default function MobileNav() {
   const { openDialog } = useDialog();
+  const { count } = useNotificationCount();
+  
   return (
     <div className="fixed bottom-0 right-0 left-0 h-15 bg-header border-t border-border">
       <div className="px-4 flex items-center justify-between sm:justify-around h-full">
@@ -36,10 +39,15 @@ export default function MobileNav() {
         <NavLink
           to="/notifications"
           className={({ isActive }) =>
-            `flex flex-col items-center ${isActive ? "text-accent" : "text-muted"}`
+            `flex flex-col items-center relative ${isActive ? "text-accent" : "text-muted"}`
           }
         >
           <BsBell className="text-2xl" />
+          {count ? (
+            <span className="bg-primary absolute size-5 rounded-full text-xs font-semibold flex justify-center items-center -top-2 -right-2 text-white">
+              {count > 99 ? "99+" : count}
+            </span>
+          ) : null}
         </NavLink>
         <NavLink
           to="/saved"
